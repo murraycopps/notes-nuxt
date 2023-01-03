@@ -1,19 +1,19 @@
 <template>
-    <div class="card">
-        <h1 class="title">{{ title }}
+    <div class="note-card">
+        <h1 class="note-title m-1 bg-red-600">{{ name }}
         </h1>
-        <p class="`text`">{{ body }}</p>
+        <p class="note-text">{{ text }}</p>
     </div>
 </template>
     
 <script>
 export default {
     props: {
-        title: {
+        name: {
             type: String,
             required: true,
         },
-        body: {
+        text: {
             type: String,
             required: true,
         }
@@ -23,7 +23,7 @@ export default {
   
     
 <style>
-.card {
+.note-card {
     width: clamp(300px, 50%, 500px);
     min-height: 300px;
     background-color: rgb(253 224 71);
@@ -36,7 +36,7 @@ export default {
     margin: 1rem;
 }
 
-.title {
+.note-title {
     font-size: 1.5rem;
     line-height: 2rem;
     color: rgb(31 41 55);
@@ -44,7 +44,7 @@ export default {
     margin-bottom: 1rem;
 }
 
-.text {
+.note-text {
     color: rgb(55 65 81);
     font-size: 1.125rem;
     line-height: 1.75rem;
