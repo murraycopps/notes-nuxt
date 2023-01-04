@@ -34,7 +34,7 @@ router.use('/notes', (req, res) => {
                     console.error(err)
                     return
                 }
-                res.send({ success: true, data: result.insertedId})
+                res.send({ success: true, data: result.insertedId })
             })
         } else if (req.method === 'GET') {
             collection.find().toArray((err, items) => {
@@ -68,23 +68,24 @@ router.use('/note/:id', (req, res) => {
         const db = client.db('notes')
         const collection = db.collection('notes')
 
-        //convert id to mongodb object id
+        // convert id to mongodb object id
         const id = new mongodb.ObjectId(req.params.id);
-        
+
         // check if id is valid
         if (!mongodb.ObjectID.isValid(id)) {
             res.status(400).send({ success: false, msg: "Invalid id" });
             return;
         }
 
-        if(req.method === 'GET') {
+        if (req.method === 'GET') {
             collection.findOne({ _id: id }, (err, result) => {
                 if (err) {
                     console.error(err);
                     res.status(500).send({ success: false, msg: "Error occurred while querying the database" });
+                } else if (!result) {
+                    res.status(404).send({ success: false, msg: "Note not found" })
                 } else {
-                    if (!result) res.status(404).send({ success: false, msg: "Note not found" })
-                    else res.send({ success: true, data: result });
+                    res.send({ success: true, data: result });
                 }
             });
         } else if (req.method === 'PUT') {
@@ -96,9 +97,10 @@ router.use('/note/:id', (req, res) => {
                 if (err) {
                     console.error(err);
                     res.status(500).send({ success: false, msg: "Error occurred while querying the database" });
+                } else if (!result) {
+                    res.status(404).send({ success: false, msg: "Note not found" })
                 } else {
-                    if (!result) res.status(404).send({ success: false, msg: "Note not found" })
-                    else res.send({ success: true});
+                    res.send({ success: true });
                 }
             })
         } else if (req.method === 'DELETE') {

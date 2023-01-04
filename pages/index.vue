@@ -8,22 +8,23 @@
 </template>
 
 <script>
-import NoteCardLink from '../components/NoteCardLink.vue';
+import NoteCardLink from '../components/NoteCardLink.vue'
 
 export default {
-  name: "IndexPage",
+  name: 'IndexPage',
   components: { NoteCardLink },
+  async asyncData() {
+    const res = await fetch('http://localhost:3000/api/notes')
+    const data = await res.json()
+    return {
+      notes: data.data,
+    }
+  },
   data() {
     return {
-      notes: []
-    };
-  },
-  created() {
-    fetch("http://localhost:3000/api/notes", { method: 'GET' })
-      .then(res => res.json())
-      .then(data => {
-        this.notes = data.data;
-      });
+      notes: [],
+    }
   },
 }
+
 </script>
