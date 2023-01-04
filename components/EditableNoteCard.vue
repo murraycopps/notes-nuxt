@@ -36,6 +36,7 @@ export default {
     },
     methods: {
         submit() {
+            console.log(this.new, this.name, this.text, this.$route.params.id)
             if (this.new) {
                 fetch(`${process.env.baseUrl}/api/notes`, {
                     method: 'POST',
