@@ -22,7 +22,10 @@ a{
     text-decoration: none;
 }
 
-.card-sizing {
+.card-width {
     width: clamp(300px, 50%, 500px);
+}
+
+.card-height{
     min-height: 300px;
 }

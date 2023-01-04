@@ -1,6 +1,6 @@
 <template>
     <div class="w-screen h-screen flex flex-col justify-center items-center">
-        <EditableNoteCard :new="true" />
+        <EditableNoteCard :new="false" />
         <div class="fixed top-0 left-0 m-2">
             <nuxt-link to="/">
                 <button
@@ -9,11 +9,13 @@
         </div>
     </div>
 </template>
-
+  
 <script>
-import EditableNoteCard from '../components/EditableNoteCard.vue';
+import EditableNoteCard from '../../../components/EditableNoteCard.vue';
 
 export default {
-    name: "CreatePage",
+    name: "NotePage",
     components: { EditableNoteCard },
 }
+</script>
+  
