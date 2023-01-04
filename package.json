@@ -23,6 +23,7 @@
     "nuxt": "^3.0.0",
     "postcss-preset-env": "^7.8.3",
     "vue": "^3.2.45",
+    "vue-router": "^4.1.6",
     "vue-server-renderer": "^2.7.14",
     "vue-template-compiler": "^2.7.14"
   },
