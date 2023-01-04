@@ -1,6 +1,6 @@
 <template>
     <div class="w-screen h-screen flex flex-col justify-center items-center">
-        <EditableNoteCard :new="false" />
+        <EditableNoteCard :new="false" :note="note" />
         <div class="fixed top-0 left-0 m-2">
             <nuxt-link to="/">
                 <button
@@ -16,6 +16,17 @@ import EditableNoteCard from '../../../components/EditableNoteCard.vue';
 export default {
     name: "NotePage",
     components: { EditableNoteCard },
+    async asyncData({ props, params }) {
+        const { data } = await fetch(`${process.env.baseUrl}/api/note/${params.id}`).then(res => res.json())
+        return {
+            note: data,
+        }
+    },
+    data() {
+        return {
+            note: {}
+        }
+    },
 }
 </script>
   

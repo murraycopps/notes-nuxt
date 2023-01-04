@@ -15,27 +15,29 @@ export default {
         new: {
             type: Boolean,
             required: true,
-        }
-    },
-    async asyncData({ props, params }) {
-        if (!props.new) {
-            const { data } = await fetch(`http://localhost:3000/api/note/${params.id}`).then(res => res.json())
-            return {
-                name: data.name,
-                text: data.text,
+        },
+        note: {
+            type: Object,
+            required: false,
+            default: () => {
+                return {
+                    name: 'New Note',
+                    text: 'New Note Text',
+                }
             }
+
         }
     },
     data() {
         return {
-            name: 'New Note',
-            text: 'New Note Text',
+            name: this.note.name,
+            text: this.note.text,
         }
     },
     methods: {
         submit() {
             if (this.new) {
-                fetch(`http://localhost:3000/api/notes`, {
+                fetch(`${process.env.baseUrl}:3000/api/notes`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -51,7 +53,7 @@ export default {
                     });
             }
             else {
-                fetch(`http://localhost:3000/api/note/${this.$route.params.id}`, {
+                fetch(`${process.env.baseUrl}/api/note/${this.$route.params.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

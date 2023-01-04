@@ -14,7 +14,7 @@ export default {
   name: 'IndexPage',
   components: { NoteCardLink },
   async asyncData() {
-    const res = await fetch('http://localhost:3000/api/notes')
+    const res = await fetch(`${process.env.baseUrl}/api/notes`)
     const data = await res.json()
     return {
       notes: data.data,
@@ -26,5 +26,4 @@ export default {
     }
   },
 }
-
 </script>

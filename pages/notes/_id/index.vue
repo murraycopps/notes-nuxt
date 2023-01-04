@@ -24,7 +24,7 @@ export default {
   name: "NotePage",
   components: { NoteCard },
   async asyncData({ params }) {
-    const { data } = await fetch(`http://localhost:3000/api/note/${params.id}`, { method: 'GET' }).then(res => res.json())
+    const { data } = await fetch(`${process.env.baseUrl}/api/note/${params.id}`, { method: 'GET' }).then(res => res.json())
     if (data === null) {
         params.$router.push(`/`)
     }
@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     async deleteNote() {
-      await fetch(`http://localhost:3000/api/note/${this.$route.params.id}`, {
+      await fetch(`${process.env.baseUrl}/api/note/${this.$route.params.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

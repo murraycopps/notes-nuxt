@@ -54,6 +54,7 @@ export default {
 
   env: {
     MONGODB_URI: process.env.MONGODB_URI,
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   },
 
   tailwindcss: {
