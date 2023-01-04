@@ -1,23 +1,18 @@
 <template>
-  <div class="index">
-    <h1>Notes</h1>
+  <div class="flex flex-col items-center gap-4 justify-start">
     <nuxt-link to="/create">
-      <button>Create Note</button>
+      <button class="text-xl px-4 py-2 rounded-md m-2 fixed left-0 top-0 bg-yellow-300 shadow-lg">Create Note</button>
     </nuxt-link>
-    <div v-for="note in notes" :key="note._id" class="">
-      <nuxt-link :to="`/notes/${note._id}`">
-        <NoteCard :name="note.name" :text="note.text" />
-      </nuxt-link>
-    </div>
+    <NoteCardLink v-for="note in notes" :key="note.id" :name="note.name" :text="note.text" :href="`/notes/${note._id}`" />
   </div>
 </template>
 
 <script>
-import NoteCard from '../components/NoteCard.vue';
+import NoteCardLink from '../components/NoteCardLink.vue';
 
 export default {
   name: "IndexPage",
-  components: { NoteCard },
+  components: { NoteCardLink },
   data() {
     return {
       notes: []
@@ -32,28 +27,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.index {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-}
-
-.index h1 {
-  font-size: 2rem;
-  margin: 1rem;
-}
-
-.index button {
-  font-size: 1rem;
-  padding: 0.5rem;
-  margin: 1rem;
-  border-radius: 0.25rem;
-  border: none;
-  background-color: rgb(253 224 71);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-</style>

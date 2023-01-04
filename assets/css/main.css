@@ -21,3 +21,8 @@ a{
     color: #333;
     text-decoration: none;
 }
+
+.card-sizing {
+    width: clamp(300px, 50%, 500px);
+    min-height: 300px;
+}

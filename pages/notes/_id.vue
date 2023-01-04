@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-screen h-screen flex justify-center items-center">
     <NoteCard :key="note._id" :name="note.name" :text="note.text" />
   </div>
 </template>
