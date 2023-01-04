@@ -53,7 +53,7 @@ export default {
                         this.$router.push(`/notes/${data.data}`)
                     });
             } else {
-                fetch(`${process.env.baseUrl}/api/note/${this.$route.params.id}`, {
+                fetch(`/api/note/${this.$route.params.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
