@@ -17,3 +17,4 @@ export default {
     name: "CreatePage",
     components: { EditableNoteCard },
 }
+</script>
