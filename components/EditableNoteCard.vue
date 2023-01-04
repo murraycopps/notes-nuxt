@@ -37,7 +37,7 @@ export default {
     methods: {
         submit() {
             if (this.new) {
-                fetch(`${process.env.baseUrl}:3000/api/notes`, {
+                fetch(`${process.env.baseUrl}/api/notes`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
